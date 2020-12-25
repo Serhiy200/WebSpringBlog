@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редагування</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="/blocks/header :: header"></header>
+<main role="main">
+
+    <div class="container mt-5 mb-5" >
+        <h1>Редагування статті</h1>
+        <div th:each="el : ${post}" >
+        <form th:action="@{'/blog/'+ ${el.id}+'/update' }" method="post">
+            <input type="text" th:value="${el.title}" name="title" placeholder="Введіть назву статті" class="form-control"><br>
+            <input type="text" th:value="${el.anons}"name="anons" placeholder="Введіть анонс" class="form-control"><br>
+            <textarea name="full_text" placeholder="Введіть текст статті" th:text="${el.full_text}" class="form-control"></textarea><br>
+            <button type="submit" class="btn btn-success">Оновити</button>
+        </form>
+    </div>
+    </div>
+
+</main>
+
+<div th:insert="/blocks/footer :: footer" ></div>
+</body>
+</html>
